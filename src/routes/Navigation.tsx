@@ -11,7 +11,7 @@ const Navigation = () => {
         <BrowserRouter>
             <div className="main-layout">
                 <nav>
-                    <img src={logo} alt="React Logo" />
+                    <img src={ logo } alt="React Logo" />
                     <ul>
                         <li>
                             <NavLink to="/lazy1" >lazy 1</NavLink>
