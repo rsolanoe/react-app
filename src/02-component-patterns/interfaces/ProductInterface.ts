@@ -4,6 +4,7 @@ import { ReactElement } from "react"
 export interface ProductCardProps {
     children?: ReactElement | Array<ReactElement>//estudiar
     product: Product
+    className?: string
 }
 
 export interface Product {
@@ -20,8 +21,23 @@ export interface ProductContextProps {
 }
 
 export interface ProductCardHOCProps {
-    ({ children, product }: ProductCardProps): JSX.Element,
-    Title: ({ title }: { title?: string }) => JSX.Element
-    Image: ({ img }: { img?: string }) => JSX.Element
-    Buttons: () => JSX.Element
+    (Props: ProductCardProps): JSX.Element,
+    Title: (Props: ProductTitleProps) => JSX.Element
+    Image: (props: ProductImgProps) => JSX.Element
+    Buttons: (Props: ProductBtnProps) => JSX.Element
+}
+
+export interface ProductTitleProps {
+    title?: string
+    className?: string
+    style?: React.CSSProperties
+}
+
+export interface ProductImgProps {
+    img?: string
+    className?: string
+}
+
+export interface ProductBtnProps {
+    className?: string
 }

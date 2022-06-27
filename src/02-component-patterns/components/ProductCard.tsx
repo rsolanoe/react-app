@@ -13,16 +13,14 @@ const { Provider } = ProductContext
 
 
 // COMPONENTE
-export const ProductCard = ({ children, product }: ProductCardProps) => {
+export const ProductCard = ({ children, product, className }: ProductCardProps) => {
 
     const { counter, increase, decrease } = useProduct()
 
     return (
         <Provider value={{ counter, increase, decrease, product }}>
-            <div className={styles.productCard}>
-            
+            <div className={`${styles.productCard} ${className}`}>
                 {children}
-                
             </div>
         </Provider>
     )
