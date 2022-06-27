@@ -1,4 +1,3 @@
-import { ProductButtons, ProductImage, ProductTitle } from "../components"
 import { ProductCard } from '../components/index';
 
 const product = {
@@ -12,15 +11,11 @@ const ShoppingPage = () => {
         <div>
             <h1>Shopping Store</h1>
 
-            <div style={{ 
-                display: 'flex',
-                flexDirection: 'row',
-                flexWrap: 'wrap'
-             }}>
+            <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
                 <ProductCard product={ product }>
-                    <ProductImage />
-                    <ProductTitle  />
-                    <ProductButtons />
+                    <ProductCard.Image />
+                    <ProductCard.Title />
+                    <ProductCard.Buttons  />
                 </ProductCard>
 
                 <ProductCard product={ product }>

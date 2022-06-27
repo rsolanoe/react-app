@@ -8,6 +8,7 @@ import noImage from '../assets/no-image.jpg'
 export const ProductImage = ({ img }: { img?: string }) => {
 
     const { product } = useContext( ProductContext )
+    
     let imgToShow: string = noImage
 
     if ( img ) {
