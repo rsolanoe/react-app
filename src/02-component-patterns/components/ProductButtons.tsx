@@ -6,12 +6,12 @@ import { ProductBtnProps } from "../interfaces/ProductInterface"
 
 
 
-export const ProductButtons = ({ className }: ProductBtnProps ) => {
+export const ProductButtons = ({ className, style }: ProductBtnProps ) => {
 
     const { counter, decrease, increase } = useContext( ProductContext )
     
     return (
-        <div className={ `${ styles.buttonsContainer } ${ className ? className : '' }` }>
+        <div style={style && style } className={ `${ styles.buttonsContainer } ${ className ? className : '' }` }>
             <button onClick={ decrease } className={ styles.buttonMinus }>-</button>
             <div className={ styles.countLabel }>{ counter }</div>
             <button onClick={ increase } className={styles.buttonAdd}>+</button>
