@@ -1,12 +1,11 @@
 import { ProductCard } from "../components/index";
 import "../styles/custom-styles.css";
-import useShoppingCart from '../hooks/useShoppingCart';
 import { products } from '../data/products';
+
+const product = products[0]
 
 
 const ShoppingPage = () => {
-
-    const { shoppingCart, onProductCountChange } = useShoppingCart()
 
     return (
         <div>
@@ -19,46 +18,34 @@ const ShoppingPage = () => {
                     flexWrap: "wrap",
                 }}
             >
-                {products.map((product) => (
-                    <ProductCard
-                        key={product.id}
-                        className="bg-dark"
-                        product={product}
-                        onChange={ onProductCountChange }
-                        value={ shoppingCart && shoppingCart[product.id]?.count || 0 }
-                    >
-                        <ProductCard.Image className="img-class" />
-                        <ProductCard.Title className="text-white" />
-                        <ProductCard.Buttons className="btn-style" />
-                    </ProductCard>
-                ))}
-            </div>
 
-            <div className="shopping-cart">
-                {
-                    shoppingCart !== undefined 
-                    && (
-                        Object.values(shoppingCart).map( item => (
-                            <ProductCard
-                            style={{ width: "120px" }}
-                            className="bg-dark"
-                            product={item}
-                            key={item.id}
-                            value={ item.count }
-                            onChange={ onProductCountChange }
-                            >
+                <ProductCard
+                    key={product.id}
+                    className="bg-dark"
+                    product={product}
+                    initialValues={{
+                        count: 4,
+                        maxCount: 10,
+                    }}
+
+                >
+                    {
+                        ( {reset, isMaxCountReached, maxCount, increase, decrease, count } ) => (
+                            <>
                                 <ProductCard.Image className="img-class" />
-                                <ProductCard.Buttons 
-                                    style={{
-                                        display: 'flex',
-                                        justifyContent: 'center'
-                                    }} 
-                                    className="btn-style" 
-                                />
-                            </ProductCard>
-                        ))
-                    )
-                }
+                                <ProductCard.Title className="text-white" />
+                                <ProductCard.Buttons className="btn-style" />
+
+                                <button onClick={ reset } >Reset</button>
+                                <button onClick={ decrease }>-2</button>
+                                {
+                                    !isMaxCountReached && <button onClick={ increase}>+2</button>
+                                }
+                                <span>{ count } { maxCount }</span>
+                            </>
+                        )
+                    }
+                </ProductCard>
             </div>
         </div>
     );

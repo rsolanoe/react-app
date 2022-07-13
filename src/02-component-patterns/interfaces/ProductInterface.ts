@@ -5,13 +5,20 @@ export interface onChangeArg {
     count: number
 }
 
+export interface InitialValues {
+    count?: number
+    maxCount?: number
+}
+
 export interface ProductCardProps {
-    children?: ReactElement | Array<ReactElement>//estudiar
+    // children?: ReactElement | Array<ReactElement>//estudiar
+    children: ( args: ProductCardHandlers) => JSX.Element 
     product: Product
     className?: string
     style?: React.CSSProperties
     onChange?: ( args: onChangeArg ) => void
     value?: number
+    initialValues?: InitialValues
 }
 
 export interface Product {
@@ -25,6 +32,7 @@ export interface ProductContextProps {
     decrease: () => void
     increase: () => void
     product: Product
+    maxCount?: number
 }
 
 export interface ProductCardHOCProps {
@@ -53,4 +61,14 @@ export interface ProductBtnProps {
 
 export interface ProductInCart extends Product {
     count: number;
+}
+
+interface ProductCardHandlers {
+    count: number;
+    isMaxCountReached: boolean;
+    maxCount?: number;
+    product: Product;
+    increase: () => void;
+    decrease: () => void;
+    reset: () => void;
 }
